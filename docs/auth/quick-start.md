@@ -48,14 +48,14 @@ import { View, Text } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 function App() {
-  // Set an initilizing state whilst Firebase connects
-  const [initilizing, setInitilizing] = useState(true);
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
   // Handle user state changes
   function onAuthStateChanged(user) {
     setUser(user);
-    if (initilizing) setInitilizing(false);
+    if (initializing) setInitializing(false);
   }
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function App() {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (initilizing) return null;
+  if (initializing) return null;
 
   if (!user) {
     return (
@@ -95,22 +95,22 @@ React Native Firebase provides access to the majority of authentication provider
 including Facebook, Google, Twitter and Github, along with phone/SMS authentication.
 
 <Grid columns="2">
-	<Block
-		icon="share"
-		color="#4caf50"
-		title="Social Auth"
-		to="/social-auth"
-	>
+  <Block
+    icon="share"
+    color="#4caf50"
+    title="Social Auth"
+    to="/social-auth"
+  >
     Authenticate your users with popular social providers such as Facebook, Twitter, Google, Github or your own custom provider.
-	</Block>
-	<Block
-		icon="perm_phone_msg"
-		color="#2196f3"
-		title="Phone Auth"
-		to="/phone-auth"
-	>
+  </Block>
+  <Block
+    icon="perm_phone_msg"
+    color="#2196f3"
+    title="Phone Auth"
+    to="/phone-auth"
+  >
     Phone authentication allows users to sign in to Firebase using their phone as the authenticator.
-	</Block>
+  </Block>
 </Grid>
 
 #### Anonymous Sign In
